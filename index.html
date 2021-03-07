@@ -100,39 +100,17 @@
         <div class="container">
             <h3>Fetured items</h3>
             <p class="items_shop">Shop for items based on what we featured in this week</p>
-            <input type="search" placeholder="Search" v-on:input="handleChange()" v-model="searchGoods"
-                data-id="search">
+            <app-input-search v-model="searchGoods"></app-input-search>
             <div class="goods-list" data-id="goods">
-                <div class="goods-item" v-for="item in filteredGoods">
-                    <div>
-                        <div class="choisecart">
-                            <button data-goods-:id="id_product" v-on:click="addToBasket(id)"><img src="Img/cart.png"
-                                    alt="cart">Add to
-                                Cart</button>
-                        </div>
-                        <img class="cardImg" v-bind:src="'Img/cardProduct' + item.id_product + '.png'"
-                            alt="cardProduct">
-                        <h3 class="cardProduct"> {{item.product_name}}</h3>
-                        <p>$ {{item.price}}</p>
-                    </div>
-                </div>
+                <app-goods-list :goods="filteredGoods"></app-goods-list>
             </div>
             <div data-id="basket">Корзина
-                <div v-for="item in basketGoods">
-                    <div class="choisecart">
-                        <button data-goods-:id="id_product" v-on:click="deleteFromBasket(id)"><img src="Img/cart.png"
-                                alt="cart">Add to
-                            Cart</button>
-                    </div>
-                    <img class="cardImg" v-bind:src="'Img/cardProduct' + item.id_product + '.png'" alt="cardProduct">
-                    <h3 class="cardProduct"> {{item.product_name}}</h3>
-                    <p>$ {{item.price}}</p>
-                </div>
+                <app-backet-list :goods="basketGoods">
+                    <app-backet-span></app-backet-span>
+                </app-backet-list>
             </div>
             <button class="browseBtn" id="btn">Browse All Product <i class="fas fa-long-arrow-alt-right"></i></button>
         </div>
-    </div>
-    </div>
     </div>
 
     <div class="discounts">
@@ -284,6 +262,7 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>
